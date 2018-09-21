@@ -1,4 +1,3 @@
 # HomeBeer
 
-
-https://github.com/georgetonjr/HomeBeer/invitations
+## Projeto de Programação orientada a objetos - Delivery de Bebidas. ##

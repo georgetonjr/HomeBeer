@@ -1,8 +1,8 @@
 <?php
 			if(!empty($_POST['cadastro'])) {
-				$email = pg_escape_string($_POST['email']);
-				$senha = pg_escape_string($_POST['senha']);
-                $apelido = pg_escape_string($_POST['apelido']);
+				$email = pg_escape_string($_POST['cadastro_form[email]']);
+				$senha = pg_escape_string($_POST['cadastro_form[senha]']);
+                $apelido = pg_escape_string($_POST['cadastro_form[nome]']);
                 $ano_nasc = pg_escape_string($_POST['idade']);
                 $cpf = pg_escape_string($_POST['cpf']);
 				$sql = "INSERT INTO usuario(email, senha, apelido, ano_nasc) VALUES('$email', '$senha', '$apelido', '$idade', '$cpf')";

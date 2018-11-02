@@ -5,9 +5,9 @@
     $db = 'homebeer';
 			
 	//Criar a conexão
-    $mysqli = new mysqli($host, $login, $senha, $db);
+    $conn    = new mysqli($host, $login, $senha, $db);
     
-    if($mysqli -> connect_errno)
-        echo " Falha na conexão: (".$mysqli -> connect_errno.") ".$mysqli -> connect_errno;
+    if($conn -> connect_errno)
+        echo " Falha na conexão: (".$conn -> connect_errno.") ".$conn -> connect_errno;
 
 ?>

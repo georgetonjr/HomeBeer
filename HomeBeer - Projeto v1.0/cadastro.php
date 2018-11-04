@@ -1,14 +1,18 @@
 <?php
-	include ("config.php");
-	if(!empty($_POST['cadastro'])) {
-		$email = $_POST['email'];
-		$senha = $_POST['senha'];
-        	$nome = $_POST['nome'];
-        	$anoN = $_POST['dataN'];
-		$cpf_cnpj = $_POST['cpfcnpj'];
-		
-		$sql = "insert into usuario (email, senha, nome, cpf_cnpj) values ('$email', '$senha', '$nome', '$cpf_cnpj')";
-		mysqli_query($conn, $sql) or die ("Erro ao tentar cadastrar registro");
-		mysqli_close($conn);		
-	}
-?>
+			if(!empty($_POST['cadastro'])) {
+				$apelido = pg_escape_string($_POST['cadastro_form[nome]']);
+				$cpf = pg_escape_string($_POST['cpf']);
+				$email = pg_escape_string($_POST['cadastro_form[email]']);
+				$senha = pg_escape_string($_POST['cadastro_form[senha]']);
+				$sql = "INSERT INTO usuario(apelido, cpf, email, senha) VALUES('$apelido', '$cpf', '$email', '$senha')";
+				$result = pg_query($sql);
+				if(!$result) {
+					$errormessage = pg_last_error();
+					echo "Erro com a QUERY: ".$errormessage;
+					exit();
+				}
+				pg_close();
+			}
+		?>
+
+

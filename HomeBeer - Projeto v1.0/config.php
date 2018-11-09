@@ -1,8 +1,14 @@
 <?php
-if(!@($conexao=pg_connect ("host=localhost dbname=homebeer port=5432 user=postgres password=""))) {
-   print "Não foi possível estabelecer uma conexão com o banco de dados.";
-} else {
-   pg_close ($conexao);
-   print "Conexão OK!"; 
-}
+    $servername = "localhost";
+    $database = "homebeer";
+    $username = "root";
+    $password = "admin";
+    // Create connection
+    $conn = mysqli_connect($servername, $username, $password, $database);
+    // Check connection
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+    echo "Connected successfully";
+    mysqli_close($conn);
 ?>

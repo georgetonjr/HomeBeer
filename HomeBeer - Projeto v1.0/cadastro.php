@@ -1,18 +1,20 @@
 <?php
-			if(!empty($_POST['cadastro'])) {
-				$apelido = pg_escape_string($_POST['cadastro_form[nome]']);
-				$cpf = pg_escape_string($_POST['cpf']);
-				$email = pg_escape_string($_POST['cadastro_form[email]']);
-				$senha = pg_escape_string($_POST['cadastro_form[senha]']);
-				$sql = "INSERT INTO usuario(apelido, cpf, email, senha) VALUES('$apelido', '$cpf', '$email', '$senha')";
-				$result = pg_query($sql);
-				if(!$result) {
-					$errormessage = pg_last_error();
-					echo "Erro com a QUERY: ".$errormessage;
-					exit();
-				}
-				pg_close();
-			}
-		?>
+//var_dump($_POST);
+	include ('config.php');
+	if(!empty($_POST['3email'])) {
+
+		$user = $_POST["3nome"];
+		$cpf = $_POST["3CPFCNPJ"];
+		$email = $_POST["3email"];
+		$senha = $_POST["3senha"];
+		$sql = "INSERT INTO usuario(nome, cpfcnpj, email, senha) VALUES('$user', '$cpf', '$email', '$senha')";
+		if (mysqli_query($conn, $sql)) {
+			echo "Usuario cadastrado com sucesso!!";
+	  	} else {
+			echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+	  	}
+	  	mysqli_close($conn);
+	}
+?>
 
 

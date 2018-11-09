@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br" >
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>HomeBeer - Entrar</title>
+  <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="css/cadastro.css">
+
+   <link rel="icon" href="img/icone.png" type="image/x-icon"/>
+  
+</head>
+<body>
+  <div class="form">
+
+      <!-- BOTÃO REGISTRO/LOGIN -->
+      
+      <ul class="tab-group">
+        <li class="tab active"><a href="#signup">REGISTRAR</a></li>
+        <li class="tab"><a href="#login">ENTRAR</a></li>
+      </ul>
+
+      <!-- BOTÃO REGISTRO -->
+      
+      <div class="tab-content">
+        <div id="signup">   
+          <h1>Crie sua conta no HomeBeer!</h1>
+          
+          <!-- FORMULÁRIO -->
+
+          <form name="cadastro" action="cadastro.php" method="post">      
+            <div class="field-wrap">
+              <label>
+                Como devemos chamar você?<span class="req">*</span>
+              </label>
+              <input type="text" required maxlenght="100" required autocomplete="off" nome="cadastro_form[nome]"/>
+            </div>
+
+            <div class="field-wrap">
+              <label>
+                Qual o seu CPF/CNPJ?<span class="req">*</span>
+              </label>
+              <input type="text" required maxlenght="12" autocomplete="off" name="cadastro_form[CPFCNPJ]"/>
+            </div>
+
+            <div class="field-wrap">
+              <label>
+                E-mail<span class="req">*</span>
+              </label>
+              <input type="email"required autocomplete="off" name="cadastro_form[email]"/>
+            </div>
+          
+            <div class="field-wrap">
+              <label>
+                Senha<span class="req">*</span>
+              </label>
+              <input type="password"required autocomplete="off" name="cadastro_form[senha]"/>
+            </div>
+
+            <!-- FIM FORMULÁRIO -->
+
+            <button type="submit" class="button button-block"/>CRIAR CONTA</button>
+          </form>
+        </div>
+
+        <!-- BOTÃO LOGIN -->
+
+        <div id="login">   
+          <h1>Bem vindo de volta ao HomeBeer!</h1>
+          
+          <form action="/" method="post">
+          
+            <div class="field-wrap">
+            <label>
+              E-mail<span class="req">*</span>
+            </label>
+            <input type="email"required autocomplete="off"/>
+          </div>
+          
+          <div class="field-wrap">
+            <label>
+              Senha<span class="req">*</span>
+            </label>
+            <input type="password"required autocomplete="off"/>
+          </div>
+          <button class="button button-block"/><a href="index.html">ENTRAR</a></button>       
+          </form>
+        </div>       
+      </div>
+</div>
+
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+  
+
+    <script  src="js/index.js"></script>
+
+</body>
+
+</html>

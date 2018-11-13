@@ -10,8 +10,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel="stylesheet" href="css/cadastro.css">
 
-   <link rel="icon" href="img/icone.png" type="image/x-icon"/>
-  
+  <link rel="icon" href="img/icone.png" type="image/x-icon"/>
+
 </head>
 <body>
   <div class="form">
@@ -31,7 +31,7 @@
           
           <!-- FORMULÁRIO -->
 
-          <form name="cadastro" action="cadastro.php" method="post">      
+          <form name="cadastro" action="cadastro.php" method="post" onsubmit="VerificaCPF();">      
             <div class="field-wrap">
               <label>
                 Como devemos chamar você?<span class="req">*</span>
@@ -43,8 +43,9 @@
               <label>
                 Qual o seu CPF/CNPJ?<span class="req">*</span>
               </label>
-              <input type="text" required maxlenght="12" autocomplete="off" name="3CPFCNPJ"/>
-            </div>
+                <input type="text" required maxlenght="12" autocomplete="off" name="3cpfcnpj" onkeypress='mascaraMutuario(this,cpfcnpj1)' onblur='clearTimeout()'/>
+              </div>
+
 
             <div class="field-wrap">
               <label>
@@ -92,13 +93,56 @@
       </div>
 </div>
 
-
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script  src="js/index.js"></script>
 
-  
+  <script>
+    function mascaraMutuario(o,f){
+        v_obj=o
+        v_fun=f
+        setTimeout('execmascara()',1)
+    }
 
-    <script  src="js/index.js"></script>
+    function execmascara(){
+        v_obj.value=v_fun(v_obj.value)
+    }
+
+    function cpfcnpj1(v){
+
+        //Remove tudo o que não é dígito
+        v=v.replace(/\D/g,"")
+
+        if (v.length <= 14) { //CPF
+
+            //Coloca um ponto entre o terceiro e o quarto dígitos
+            v=v.replace(/(\d{3})(\d)/,"$1.$2")
+
+            //Coloca um ponto entre o terceiro e o quarto dígitos
+            //de novo (para o segundo bloco de números)
+            v=v.replace(/(\d{3})(\d)/,"$1.$2")
+
+            //Coloca um hífen entre o terceiro e o quarto dígitos
+            v=v.replace(/(\d{3})(\d{1,2})$/,"$1-$2")
+
+        } else { //CNPJ
+            //Coloca ponto entre o segundo e o terceiro dígitos
+            v=v.replace(/^(\d{2})(\d)/,"$1.$2")
+
+            //Coloca ponto entre o quinto e o sexto dígitos
+            v=v.replace(/^(\d{2})\.(\d{3})(\d)/,"$1.$2.$3")
+
+            //Coloca uma barra entre o oitavo e o nono dígitos
+            v=v.replace(/\.(\d{3})(\d)/,".$1/$2")
+
+            //Coloca um hífen depois do bloco de quatro dígitos
+            v=v.replace(/(\d{4})(\d)/,"$1-$2")
+        } 
+        return v
+    }
+
+  </script>
 
 </body>
 
 </html>
+

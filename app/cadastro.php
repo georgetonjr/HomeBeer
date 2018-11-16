@@ -10,7 +10,11 @@
 		$senha = md5($nocript);
 		$sql = "INSERT INTO usuario(nome, cpfcnpj, email, senha) VALUES('$user', '$cpf', '$email', '$senha')";
 		$in = mysqli_query($conn, $sql);
-		header('Location: ../cadastro.html');
+		if($in){
+			echo ("<script>alert('Usuario cadastrado com sucesso! '); location.href='../cadastro.html#login';</script>"); 
+		}else{
+			echo ("<script>alert('Não foi possivel realizar o cadastro, por favor tente novamente! '); location.href='../cadastro.html#login';</script>"); 
+		}
     }
 	
 ?>

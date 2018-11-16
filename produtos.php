@@ -2,7 +2,7 @@
 // Inicia sessões 
 session_start(); 
  
-// Verifica se existe os dados da sessão de login 
+// Verifica se existe usuario logado
 if(!isset($_SESSION["usuario"])) 
 { 
 // Usuário não logado! Redireciona para a página de login 

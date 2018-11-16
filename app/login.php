@@ -13,7 +13,7 @@
    			header('Location: ../produtos.php');
    			exit();
    		}else{
-            echo ("<script>alert('Login ou senha incorreto '); location.href='cadastro.html#login';</script>");        
+            echo ("<script>alert('Login ou senha incorreto '); location.href='../cadastro.html#login';</script>");        
             //header('Location:/cadastro.html'); 
          }
    }	

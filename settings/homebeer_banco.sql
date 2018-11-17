@@ -31,8 +31,8 @@ CREATE TABLE IF NOT EXISTS `Homebeer`.`Usuario` (
   `valCartao` VARCHAR(5) NULL,
   `codsCartao` VARCHAR(3) NULL,
   PRIMARY KEY (`idUsuario`),
-  UNIQUE INDEX `cpfcnpj_UNIQUE` (`cpfcnpj` ASC) VISIBLE,
-  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
+  UNIQUE INDEX `cpfcnpj_UNIQUE` (`cpfcnpj` ASC) ,
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC))
 ENGINE = InnoDB;
 
 
@@ -57,8 +57,8 @@ CREATE TABLE IF NOT EXISTS `Homebeer`.`Usuarios_vendem_Produtos` (
   `Usuario_idUsuario` INT NOT NULL,
   `Produtos_idProdutos` INT NOT NULL,
   PRIMARY KEY (`Usuario_idUsuario`, `Produtos_idProdutos`),
-  INDEX `fk_Usuario_has_Produtos_Produtos1_idx` (`Produtos_idProdutos` ASC) VISIBLE,
-  INDEX `fk_Usuario_has_Produtos_Usuario_idx` (`Usuario_idUsuario` ASC) VISIBLE,
+  INDEX `fk_Usuario_has_Produtos_Produtos1_idx` (`Produtos_idProdutos` ASC) ,
+  INDEX `fk_Usuario_has_Produtos_Usuario_idx` (`Usuario_idUsuario` ASC) ,
   CONSTRAINT `fk_Usuario_has_Produtos_Usuario`
     FOREIGN KEY (`Usuario_idUsuario`)
     REFERENCES `Homebeer`.`Usuario` (`idUsuario`)
@@ -77,7 +77,7 @@ GRANT ALL ON `Homebeer`.* TO 'georgetonjr';
 GRANT SELECT ON TABLE `Homebeer`.* TO 'georgetonjr';
 GRANT SELECT, INSERT, TRIGGER, UPDATE, DELETE ON TABLE `Homebeer`.* TO 'georgetonjr';
 GRANT SELECT, INSERT, TRIGGER ON TABLE `Homebeer`.* TO 'georgetonjr';
-GRANT EXECUTE ON ROUTINE `Homebeer`.* TO 'georgetonjr';
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

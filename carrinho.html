@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br" >
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>HomeBeer - Produtos</title>
+  <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="css/carrinho.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <link rel="icon" href="img/icone.png" type="image/x-icon"/>
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <nav>
+        <div class="menu-icon">
+          <i class="fa fa-bars fa-2x"></i>
+        </div>
+
+        <div class="logo">
+          HOMEBEER
+        </div>
+
+        <div class="menu">
+          <ul>
+              <li><a href="index.html">HOME</a></li>
+              <li><a href="produtos.html">PRODUTOS</a></li>
+              <li><a href="#">MINHA CONTA</a></li>
+              <li><a href="carrinho.html"><img src="img/icones/1.png"> (1)</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+  </div>
+  
+  <div class="conteudo">
+    <div class="slider">
+      <div class="produtos-slide">
+        <p></p>
+      </div>
+      <div class="produtos-slide">
+        <p></p>
+      </div>
+      <div class="produtos-slide">
+        <p></p>
+      </div>            
+    </div>
+
+
+
+
+  </div> 
+
+
+
+</body>
+</html>
+
+      <script type="text/javascript">
+
+      // Menu-toggle button
+
+      $(document).ready(function() {
+            $(".menu-icon").on("click", function() {
+                  $("nav ul").toggleClass("showing");
+            });
+      });
+
+      // Scrolling Effect
+
+      $(window).on("scroll", function() {
+            if($(window).scrollTop()) {
+                  $('nav').addClass('black');
+            }
+
+            else {
+                  $('nav').removeClass('black');
+            }
+      })
+
+
+      </script>

@@ -20,7 +20,6 @@ exit;
   <title>HomeBeer - Produtos</title>
   <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-  <link rel="stylesheet" href="css/produtos.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -30,6 +29,7 @@ exit;
 
   <!-- Bootstrap -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/produtos.css">
 
 </head>
 <body>
@@ -50,6 +50,7 @@ exit;
                         <li><a href="index.html">HOME</a></li>
                         <li><a href="produtos.html">PRODUTOS</a></li>
                         <li><a href="#">MINHA CONTA</a></li>
+                        <li><a href="carrinho.html"><img src="img/icones/1.png"> (1)</a></li>
                     </ul>
                 </div>
             </nav>

@@ -1,6 +1,6 @@
 *, *:before, *:after {
   box-sizing: border-box;
-  font-family: 'Titillium Web', sans-serif;
+
 }
 
 html, body {
@@ -10,6 +10,7 @@ html, body {
   width: 100%;
   background: url(../img/4.jpg) no-repeat fixed center; /* BACKGROUND IMAGE */
   background-size: cover;
+  font-family: 'Titillium Web', sans-serif;
 }
 
 body {
@@ -120,7 +121,7 @@ nav ul li a:hover {
       .menu-icon {
             display: block;
       }
- 
+
 }
 
 /* CONTEUDO */
@@ -133,9 +134,48 @@ nav ul li a:hover {
   margin: auto;
 }
 
-.conteudo h2 {
-  text-align: center;
+.conteudo .carrinho-bar {
   font-size: 20px;
   font-weight: bold;
   color: black;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 10px;
+}
+
+.conteudo hr {
+  width: 98%;
+  border: 1px solid black;
+}
+
+.conteudo .titulo-carrinho{
+  position: absolute;
+  left: 4%;
+}
+
+.conteudo .preço-carrinho{
+  position: absolute;
+  left: 68.5%;
+}
+
+.conteudo .qtd-carrinho{
+  position: absolute;
+  left: 90%;
+}
+
+.panel-info .panel-heading {
+  background-color: #303131;
+  border-color: black;
+}
+
+.panel-info {
+  border-color: black;
+}
+
+.col-xs-8 {
+  width: 100%;
+}
+
+.row {
+  margin: 0 auto;
 }

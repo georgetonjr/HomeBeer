@@ -124,7 +124,7 @@ exit;
                   <div class="product-info">
                     <div class="name">CERVEJA OLD SCHOOL WITBIER 500 ML</div>
                     <div class="dis">Cerveja de trigo clara e referescante, com casca de laranja e sementes de coentro.</div>
-                    <a class="btn" href="#">COMPRAR</a>
+                    <a class="btn" href="#" onclick="return chamarPhpAjax();">COMPRAR</a>
                   </div>
                 </div>
 
@@ -136,7 +136,7 @@ exit;
                   <div class="product-info">
                     <div class="name">CERVEJA OLD SCHOOL WITBIER 500 ML</div>
                     <div class="dis">Cerveja de trigo clara e referescante, com casca de laranja e sementes de coentro.</div>
-                    <a class="btn" href="#">COMPRAR</a>
+                    <a class="btn" href="#" onclick="return chamarPhpAjax();">COMPRAR</a>
                   </div>
                 </div>
 
@@ -148,7 +148,7 @@ exit;
                   <div class="product-info">
                     <div class="name">CERVEJA OLD SCHOOL WITBIER 500 ML</div>
                     <div class="dis">Cerveja de trigo clara e referescante, com casca de laranja e sementes de coentro.</div>
-                    <a class="btn" href="#">COMPRAR</a>
+                    <a class="btn" href="#" onclick="return chamarPhpAjax();">COMPRAR</a>
                   </div>
                 </div>
 
@@ -160,7 +160,7 @@ exit;
                   <div class="product-info">
                     <div class="name">CERVEJA OLD SCHOOL WITBIER 500 ML</div>
                     <div class="dis">Cerveja de trigo clara e referescante, com casca de laranja e sementes de coentro.</div>
-                    <a class="btn" href="#">COMPRAR</a>
+                    <a class="btn" href="#" onclick="return chamarPhpAjax();"> COMPRAR</a>
                   </div>
                 </div>
             </div>
@@ -169,6 +169,14 @@ exit;
         </div>
 </body>
 </html>
+<script type="text/javascript">
+  function chamarPhpAjax() {
+   $.ajax({
+      url:'app/carrinho.php',
+      complete: addcar('',2.5,1);
+    }
+  }
+</script>
       <script type="text/javascript">
 
       // Menu-toggle button
@@ -190,6 +198,17 @@ exit;
                   $('nav').removeClass('black');
             }
       })
-
-
       </script>
+
+<?php
+    include ('/settings/config.php');
+    function addcar($nomeprod, $preco, $qtd){
+        $sql = "INSERT INTO produto(nome_produto, preco,quantidade) VALUES('$nomeprod', $preco, $qtd)";
+	    $in = mysqli_query($conn, $sql);
+	    if($in){
+		    echo ("<script>alert('Produto adicionado ao carrinho! '); location.href='carrinho.php';</script>"); 
+	    }else{
+	    	echo ("<script>alert('Erro, por favor tente novamente! '); location.href='produtos.php';</script>"); 
+	    }
+    }
+?>

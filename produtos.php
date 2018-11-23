@@ -1,6 +1,7 @@
 <?php 
 // Inicia sessões 
-session_start(); 
+session_start();
+ 
  
 // Verifica se existe usuario logado
 if(!isset($_SESSION["usuario"])) 
@@ -48,8 +49,8 @@ exit;
                 <div class="menu">
                     <ul>
                         <li><a href="index.html">HOME</a></li>
-                        <li><a href="produtos.html">PRODUTOS</a></li>
-                        <li><a href="#">MINHA CONTA</a></li>
+                        <li><a href="produtos.php">PRODUTOS</a></li>
+                        <li><a href="minhaconta.html">MINHA CONTA</a></li>
                         <li><a href="carrinho.html"><img src="img/icones/1.png"> (1)</a></li>
                     </ul>
                 </div>
@@ -124,7 +125,7 @@ exit;
                   <div class="product-info">
                     <div class="name">CERVEJA OLD SCHOOL WITBIER 500 ML</div>
                     <div class="dis">Cerveja de trigo clara e referescante, com casca de laranja e sementes de coentro.</div>
-                    <a class="btn" href="#" onclick="return chamarPhpAjax();">COMPRAR</a>
+                    <a class="btn" href="" onclick="return chamarPhpAjax();">COMPRAR</a>
                   </div>
                 </div>
 
@@ -136,7 +137,7 @@ exit;
                   <div class="product-info">
                     <div class="name">CERVEJA OLD SCHOOL WITBIER 500 ML</div>
                     <div class="dis">Cerveja de trigo clara e referescante, com casca de laranja e sementes de coentro.</div>
-                    <a class="btn" href="#" onclick="return chamarPhpAjax();">COMPRAR</a>
+                    <a class="btn" href="" onclick="return chamarPhpAjax();">COMPRAR</a>
                   </div>
                 </div>
 
@@ -148,7 +149,7 @@ exit;
                   <div class="product-info">
                     <div class="name">CERVEJA OLD SCHOOL WITBIER 500 ML</div>
                     <div class="dis">Cerveja de trigo clara e referescante, com casca de laranja e sementes de coentro.</div>
-                    <a class="btn" href="#" onclick="return chamarPhpAjax();">COMPRAR</a>
+                    <a class="btn" href="" onclick="return chamarPhpAjax();">COMPRAR</a>
                   </div>
                 </div>
 
@@ -160,7 +161,7 @@ exit;
                   <div class="product-info">
                     <div class="name">CERVEJA OLD SCHOOL WITBIER 500 ML</div>
                     <div class="dis">Cerveja de trigo clara e referescante, com casca de laranja e sementes de coentro.</div>
-                    <a class="btn" href="#" onclick="return chamarPhpAjax();"> COMPRAR</a>
+                    <a class="btn" href="" onclick="return chamarPhpAjax();"> COMPRAR</a>
                   </div>
                 </div>
             </div>
@@ -170,11 +171,12 @@ exit;
 </body>
 </html>
 <script type="text/javascript">
-  function chamarPhpAjax() {
-   $.ajax({
-      url:'app/carrinho.php',
-      complete: addcar('',2.5,1);
-    }
+  function chamarPhpAjax(){
+    <?php
+      include 'app/funcao.php';
+      //* aqui coloque o código php
+      
+    ?>
   }
 </script>
       <script type="text/javascript">
@@ -200,15 +202,3 @@ exit;
       })
       </script>
 
-<?php
-    include ('/settings/config.php');
-    function addcar($nomeprod, $preco, $qtd){
-        $sql = "INSERT INTO produto(nome_produto, preco,quantidade) VALUES('$nomeprod', $preco, $qtd)";
-	    $in = mysqli_query($conn, $sql);
-	    if($in){
-		    echo ("<script>alert('Produto adicionado ao carrinho! '); location.href='carrinho.php';</script>"); 
-	    }else{
-	    	echo ("<script>alert('Erro, por favor tente novamente! '); location.href='produtos.php';</script>"); 
-	    }
-    }
-?>

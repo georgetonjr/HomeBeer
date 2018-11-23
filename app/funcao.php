@@ -11,17 +11,4 @@
 	    	echo ("<script>alert('Erro, por favor tente novamente! '); location.href='produtos.php';</script>"); 
 	    }
     }
-
-
-
-
-    function addproduto($nomeprod, $preco, $qtd){
-        $sql = "INSERT INTO produto(nome, descricao, valor, imagem) VALUES('$nome', '$descrição', $valor, '$imagem')";
-	    $in = mysqli_query($conn, $sql);
-	    if($in){
-		    echo ("<script>alert('Produto adicionado ao carrinho! '); location.href='carrinho.php';</script>"); 
-	    }else{
-	    	echo ("<script>alert('Erro, por favor tente novamente! '); location.href='produtos.php';</script>"); 
-	    }
-    }
 ?>

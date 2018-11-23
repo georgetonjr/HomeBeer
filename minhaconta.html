@@ -61,7 +61,7 @@
           
           <!-- FORMULÁRIO -->
 
-          <form name="alterarcadastro" action="" method="post" onsubmit="VerificaCPF();">      
+          <form name="alterarcadastro" action="app/edi_cad.php" method="post" onsubmit="VerificaCPF();">      
             <div class="field-wrap">
               <label>
                 Como devemos chamar você?<span class="req">*</span>
@@ -95,7 +95,7 @@
         <div id="regprod">   
           <h1>Insira um novo produto para vender!</h1>
           
-          <form action="" method="post" onsubmit="Checkfiles(this)">
+          <form action="app/cadastroproduto.php" method="post" onsubmit="Checkfiles(this)">
             <div class="field-wrap">
               <label>
                 Nome do Produto<span class="req">*</span>
@@ -114,7 +114,7 @@
               <label>
                 Valor do Produto<span class="req">*</span>
               </label>
-              <input type="text" required maxlenght="100" required autocomplete="off" name="descprod"/>
+              <input type="text" required maxlenght="100" required autocomplete="off" name="valorprod"/>
             </div>
 
             <div class="field-wrap">

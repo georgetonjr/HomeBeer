@@ -34,7 +34,7 @@
           <ul>
               <li><a href="index.html">HOME</a></li>
               <li><a href="produtos.php">PRODUTOS</a></li>
-              <li><a href="minhaconta.html">MINHA CONTA</a></li>
+              <li><a href="minhaconta.php">MINHA CONTA</a></li>
               <li><a href="carrinho.html"><img src="img/icones/1.png"></a></li>
           </ul>
         </div>
@@ -42,7 +42,7 @@
     </header>
   </div>
   
-  <section id="infoconta">
+  <section class="infoconta">
     <div class="conteudo">
        <div class="form">
 
@@ -60,35 +60,34 @@
           <h1>Alterar dados cadastrais</h1>
           
           <!-- FORMULÁRIO -->
-		<?php
+		<?php 
+		
 			include ('settings/config.php');
-			$resultado = mysql_query($conn, "SELECT * FROM `usuario`");
-			$crud = mysql_fetch_array($resultado);
-		 
+			$select = "SELECT * FROM usuario;";
+			$resul = mysqli_query($conn, $select);					
+
+			$crud = mysqli_fetch_assoc($resul)
 		?>
-          <form name="alterarcadastro" action="app/altcadastro.php" method="post" onsubmit="VerificaCPF();">      
+          <form name="alterarcadastro" action="app/altcadastro.php" method="GET" onsubmit="VerificaCPF();">      
             <div class="field-wrap">
-              
-              <input type="text" required maxlenght="100" required autocomplete="off" name="nome" value="<?php echo $crud['nome'];?>"/>
+			<input type="text" required maxlenght="100" required autocomplete="off" name="nome" value="<?php echo $crud['nome'];?>"/>
             </div>
 
             <div class="field-wrap">
-              
                 <input type="text" required maxlenght="12" autocomplete="off" name="cpfcnpj" onkeypress='mascaraMutuario(this,cpfcnpj1)' onblur='clearTimeout()' value="<?php echo $crud['cpfcnpj'];?>"/>
-              </div>
-
+            </div>
 
             <div class="field-wrap">
-              
-              <input type="email"required autocomplete="off" name="email" value="<?php echo $crud['email'];?>"/>
+				<input type="email"required autocomplete="off" name="email" value="<?php echo $crud['email'];?>"/>
             </div>
 
             <!-- FIM FORMULÁRIO -->
 
-            <a href="altcadastro.php?id=<?=$crud['id']?>"><button type="submit" class="button button-block" name="alterar"//>Alterar Dados</button></a>
+            <button type="submit" class="button button-block" name="alterar"/>Alterar Dados</button>
           </form>
+		  <?php  ?>
         </div>
-		<?php  ?>
+			
         <!-- BOTÃO LOGIN -->
 
         <div id="regprod">   

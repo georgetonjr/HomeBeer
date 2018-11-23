@@ -34,102 +34,56 @@
           <ul>
               <li><a href="index.html">HOME</a></li>
               <li><a href="produtos.php">PRODUTOS</a></li>
-              <li><a href="minhaconta.html">MINHA CONTA</a></li>
+              <li><a href="minhaconta.php">MINHA CONTA</a></li>
               <li><a href="carrinho.html"><img src="img/icones/1.png"></a></li>
           </ul>
         </div>
       </nav>
     </header>
   </div>
-  
-  <section id="infoconta">
+    <section class="infoconta">
     <div class="conteudo">
        <div class="form">
 
       <!-- BOTÃO REGISTRO/LOGIN -->
       
       <ul class="tab-group">
-        <li class="tab active"><a href="#alterardados">ALTERAR DADOS</a></li>
-        <li class="tab"><a href="#regprod">CADASTRAR PRODUTOS</a></li>
+        <li class="tab">ALTERAR PRODUTOS</li>
       </ul>
-
-      <!-- BOTÃO REGISTRO -->
-      
-      <div class="tab-content">
-        <div id="alterardados">   
-          <h1>Alterar dados cadastrais</h1>
-          
-          <!-- FORMULÁRIO -->
-		<?php
-			include ('settings/config.php');
-			$resultado = mysql_query($conn, "SELECT * FROM `usuario`");
-			$crud = mysql_fetch_array($resultado);
-		 
-		?>
-          <form name="alterarcadastro" action="app/altcadastro.php" method="post" onsubmit="VerificaCPF();">      
-            <div class="field-wrap">
-              
-              <input type="text" required maxlenght="100" required autocomplete="off" name="nome" value="<?php echo $crud['nome'];?>"/>
-            </div>
-
-            <div class="field-wrap">
-              
-                <input type="text" required maxlenght="12" autocomplete="off" name="cpfcnpj" onkeypress='mascaraMutuario(this,cpfcnpj1)' onblur='clearTimeout()' value="<?php echo $crud['cpfcnpj'];?>"/>
-              </div>
-
-
-            <div class="field-wrap">
-              
-              <input type="email"required autocomplete="off" name="email" value="<?php echo $crud['email'];?>"/>
-            </div>
-
-            <!-- FIM FORMULÁRIO -->
-
-            <a href="altcadastro.php?id=<?=$crud['id']?>"><button type="submit" class="button button-block" name="alterar"//>Alterar Dados</button></a>
-          </form>
-        </div>
-		<?php  ?>
+ 	
         <!-- BOTÃO LOGIN -->
 
         <div id="regprod">   
-          <h1>Insira um novo produto para vender!</h1>
+          <h1>Altere os dados do seu produto</h1>
           
-          <form name="produto" action="app/cadproduto.php" method="post">
-            <div class="field-wrap">
-              <label>
-                Nome do Produto<span class="req">*</span>
-              </label>
-              <input type="text" required maxlenght="100" required autocomplete="off" name="nome_produto"/>
+          <form name="produto" action="app/sqlproduto.php" method="GET">
+           <?php  
+		include ('settings/config.php');
+		$select = "SELECT * FROM usuario;";
+		$resul = mysqli_query($conn, $select);
+		$produto = mysqli_fetch_assoc($resul)    
+           ?>
+
+	    <div class="field-wrap">
+              <input type="text" required maxlenght="100" required autocomplete="off" name="nome_produto" value="<?php echo $produto['nome_produto'];?>"/>
             </div>     
 	
 	    <div class="field-wrap">
-              <label>
-                Marca do Produto<span class="req">*</span>
-              </label>
               <input type="text" required maxlenght="100" required autocomplete="off" name="marca_produto"/>
             </div>     
 
             <div class="field-wrap">
-              <label>
-                Descrição do Produto<span class="req">*</span>
-              </label>
               <input type="text" required maxlenght="100" required autocomplete="off" name="descricao_produto"/>
             </div>     
 
             <div class="field-wrap">
-              <label>
-                Valor do Produto<span class="req">*</span>
-              </label>
               <input type="text" required maxlenght="100" required autocomplete="off" name="preco"/>
             </div>
 	    
 	    <div class="field-wrap">
-              <label>
-                Quantidade<span class="req">*</span>
-              </label>
               <input type="text" required maxlenght="100" required autocomplete="off" name="quantidade"/>
             </div>     
-
+	<?php ?>
 	    
             <!-- <div class="field-wrap">
               <label>
@@ -138,7 +92,7 @@
               <br><br><input type="file" id="fprod" name="fotoprod" class="btn btn-success" accept="image/png, image/jpeg"  multiple />
             </div>  -->
 
-          <button type="submit" class="button button-block" name="salvar"/>Cadastrar Produto</button>     
+          <a href="sqlproduto.php?$produto_GET[$id]?"> <button type="submit" class="button button-block" name="salvar"/>Alterar</button></a>  
           </form>
         </div>       
       </div>
@@ -238,5 +192,3 @@
 
   </body>
   </html>
-
-      

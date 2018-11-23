@@ -1,7 +1,9 @@
+<!DOCTYPE html>
+<html lang="pt-br" >
 <?php 
+include ('settings/config.php');
 // Inicia sessões 
-session_start();
- 
+session_start(); 
  
 // Verifica se existe usuario logado
 if(!isset($_SESSION["usuario"])) 
@@ -10,10 +12,9 @@ if(!isset($_SESSION["usuario"]))
 header("Location: cadastro.html"); 
 exit; 
 } 
-?>
-<!DOCTYPE html>
-<html lang="pt-br" >
 
+//$resultado = mysqli_query($conn, "select * from `produto` ORDER BY `produto`.`idproduto` DESC;");
+?>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,7 +51,7 @@ exit;
                     <ul>
                         <li><a href="index.html">HOME</a></li>
                         <li><a href="produtos.php">PRODUTOS</a></li>
-                        <li><a href="minhaconta.html">MINHA CONTA</a></li>
+                        <li><a href="minhaconta.php">MINHA CONTA</a></li>
                         <li><a href="carrinho.html"><img src="img/icones/1.png"> (1)</a></li>
                     </ul>
                 </div>
@@ -114,69 +115,54 @@ exit;
             </section>
 
             <section id="Boxlist-Produtos">
-
-                <!-- PRODUTOS -->
-            <div class="produt-list">
-                <div class="card">
-                  <div class="top-section">
-                    <img id="image-container" src="img/produtos/2.jpg" alt="">
-                    <div class="price">R$2,50</div>
-                  </div>
-                  <div class="product-info">
-                    <div class="name">CERVEJA OLD SCHOOL WITBIER 500 ML</div>
-                    <div class="dis">Cerveja de trigo clara e referescante, com casca de laranja e sementes de coentro.</div>
-                    <a class="btn" href="" onclick="return chamarPhpAjax();">COMPRAR</a>
-                  </div>
-                </div>
-
-                <div class="card">
-                  <div class="top-section">
-                    <img id="image-container" src="img/produtos/2.jpg" alt="">
-                    <div class="price">R$2,50</div>
-                  </div>
-                  <div class="product-info">
-                    <div class="name">CERVEJA OLD SCHOOL WITBIER 500 ML</div>
-                    <div class="dis">Cerveja de trigo clara e referescante, com casca de laranja e sementes de coentro.</div>
-                    <a class="btn" href="" onclick="return chamarPhpAjax();">COMPRAR</a>
-                  </div>
-                </div>
-
-                <div class="card">
-                  <div class="top-section">
-                    <img id="image-container" src="img/produtos/2.jpg" alt="">
-                    <div class="price">R$2,50</div>
-                  </div>
-                  <div class="product-info">
-                    <div class="name">CERVEJA OLD SCHOOL WITBIER 500 ML</div>
-                    <div class="dis">Cerveja de trigo clara e referescante, com casca de laranja e sementes de coentro.</div>
-                    <a class="btn" href="" onclick="return chamarPhpAjax();">COMPRAR</a>
-                  </div>
-                </div>
-
-                <div class="card">
-                  <div class="top-section">
-                    <img id="image-container" src="img/produtos/2.jpg" alt="">
-                    <div class="price">R$2,50</div>
-                  </div>
-                  <div class="product-info">
-                    <div class="name">CERVEJA OLD SCHOOL WITBIER 500 ML</div>
-                    <div class="dis">Cerveja de trigo clara e referescante, com casca de laranja e sementes de coentro.</div>
-                    <a class="btn" href="" onclick="return chamarPhpAjax();"> COMPRAR</a>
-                  </div>
-                </div>
-            </div>
-                
+				<?php function listaProdutos($conn) {
+						$produtos = array();
+						$resultado = mysqli_query($conn, "select * from `produto` ORDER BY `produto`.`idproduto` DESC");
+						while($produto = mysqli_fetch_assoc($resultado)) {
+							array_push($produtos, $produto);
+						}
+						return $produtos;
+					}
+				?>
+				<?php
+					$produtos = listaProdutos($conn);
+				?>
+				<?php
+					foreach($produtos as $produto) :
+				?>
+				
+				<!-- PRODUTOS -->
+				<tr>
+				<th>
+				
+					<div class="card">
+					  <div class="top-section">
+						<img id="image-container" src="img/produtos/2.jpg" alt="">
+						<div class="price">R$<?php echo $produto['preco'];?></div>
+					  </div>
+					  <div class="product-info">
+						<div class="name"><?php echo $produto['nome_produto'];?></div>
+						<div class="dis"><?php echo $produto['descricao_produto'];?></div>
+						<a class="btn" href="#" onclick="return chamarPhpAjax();">COMPRAR</a>
+						<a href="alterarProduto.php?id=<?=$crud['idproduto']?>" class="btn" onclick="return chamarPhpAjax();">ALTERAR</a>
+					  </div>
+					</div>
+			
+				<?php
+					endforeach
+				?>
+				</th>
+				</tr>
             </section>
         </div>
 </body>
 </html>
 <script type="text/javascript">
-  function chamarPhpAjax(){
-    <?php
-      include 'app/funcao.php';
-      //* aqui coloque o código php
-      
-    ?>
+  function chamarPhpAjax() {
+   $.ajax({
+      url:'app/carrinho.php',
+      complete: addcar('',2.5,1);
+    }
   }
 </script>
       <script type="text/javascript">
@@ -202,3 +188,15 @@ exit;
       })
       </script>
 
+<?php
+    include ('/settings/config.php');
+    function addcar($nomeprod, $preco, $qtd){
+        $sql = "INSERT INTO produto(nome_produto, preco,quantidade) VALUES('$nomeprod', $preco, $qtd)";
+	    $in = mysqli_query($conn, $sql);
+	    if($in){
+		    echo ("<script>alert('Produto adicionado ao carrinho! '); location.href='carrinho.php';</script>"); 
+	    }else{
+	    	echo ("<script>alert('Erro, por favor tente novamente! '); location.href='produtos.php';</script>"); 
+	    }
+    }
+?>

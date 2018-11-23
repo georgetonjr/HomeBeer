@@ -11,6 +11,11 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous">
+  </script>
 
   <link rel="icon" href="img/icone.png" type="image/x-icon"/>
 
@@ -34,7 +39,7 @@
         <div class="menu">
           <ul>
               <li><a href="index.html">HOME</a></li>
-              <li><a href="produtos.php">PRODUTOS</a></li>
+              <li><a href="produtos.html">PRODUTOS</a></li>
               <li><a href="#">MINHA CONTA</a></li>
               <li><a href="carrinho.html"><img src="img/icones/1.png"> (1)</a></li>
           </ul>
@@ -151,3 +156,4 @@
 
 
       </script>
+
